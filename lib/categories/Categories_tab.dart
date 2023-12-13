@@ -5,7 +5,8 @@ import '../model/Category.dart';
 
 class CategoriesTab extends StatelessWidget {
    var categoriesList=Category.getCategoryList();
-   static const routeName ='categoriesTab';
+   Function onCategoryCallBack;
+   CategoriesTab({required this.onCategoryCallBack});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,7 +26,9 @@ class CategoriesTab extends StatelessWidget {
                   crossAxisSpacing: 18
               ),
               itemBuilder: (context,index){
-                return CategoryWidget(category: categoriesList[index], index: index);
+                return InkWell(
+                  onTap: () => onCategoryCallBack(categoriesList[index]),
+                    child: CategoryWidget(category: categoriesList[index], index: index));
               },
               itemCount: 6,
             ),
