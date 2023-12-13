@@ -5,8 +5,10 @@ import 'package:news/categories/Categories_tab.dart';
 import 'package:news/my_theme.dart';
 
 class HomeDrawer extends StatelessWidget {
-
-
+  Function onCallBack;
+  HomeDrawer({required this.onCallBack});
+  static const int Categories=1;
+  static const int Settings=2;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,7 +28,7 @@ class HomeDrawer extends StatelessWidget {
                ),
               InkWell(
                 onTap: (){
-                  Navigator.of(context).pushNamed(CategoriesTab.routeName);
+                  onCallBack(1);
                 },
                 child: Row(
                   children: [
@@ -40,7 +42,7 @@ class HomeDrawer extends StatelessWidget {
               ),
           InkWell(
             onTap: (){
-              Navigator.of(context).pushNamed(SettingsTab.routeName) ;
+              onCallBack(2);
             },
             child: Row(
               children: [

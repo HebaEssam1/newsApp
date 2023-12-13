@@ -4,6 +4,7 @@ import 'package:news/Home/HomePage.dart';
 import 'package:news/Settings_tab.dart';
 import 'package:news/categories/Categories_tab.dart';
 import 'package:news/my_theme.dart';
+import 'package:news/news/article.dart';
 
 void main() async{
   runApp(MyApp());
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       
       routes:
       {HomePage.routeName :(context)=> HomePage(),
-      CategoriesTab.routeName:(context)=>CategoriesTab(),
+        Article.routeName: (context) => Article(),
       SettingsTab.routeName:(context) => SettingsTab()},
       initialRoute: HomePage.routeName,
     );
