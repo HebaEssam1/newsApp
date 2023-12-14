@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import '../model/news_response.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Article extends StatelessWidget {
   static const routeName='article';
@@ -44,14 +46,35 @@ class Article extends StatelessWidget {
               textAlign: TextAlign.end,),
             Text(news.content ?? '',
               style: TextStyle(
-                fontSize: 15,
+                fontSize: 18,
                 color: Colors.black87,
               ),
     maxLines: 20,),
+            InkWell(
+              onTap: () async {
+                _launchURL(news?.url ?? '');
 
+              },
+              child: const Text(
+                'See More->',
+                textAlign: TextAlign.end,
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.blue,
+                  decoration: TextDecoration.underline,
+                ),
+              ),
+            ),
           ],
         ),
       ),
     );
+  }
+  _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

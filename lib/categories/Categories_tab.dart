@@ -30,7 +30,7 @@ class CategoriesTab extends StatelessWidget {
                   onTap: () => onCategoryCallBack(categoriesList[index]),
                     child: CategoryWidget(category: categoriesList[index], index: index));
               },
-              itemCount: 6,
+              itemCount: 7,
             ),
           ),
         ],
